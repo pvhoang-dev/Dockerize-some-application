@@ -171,7 +171,7 @@ services:
     networks:
       - internal
     volumes:
-      - ./application/:/var/www/html/
+      - ./:/var/www/html/
       - ./logs/nginx:/var/log/nginx/
     container_name: nginx
   php:
@@ -181,7 +181,7 @@ services:
     networks:
       - internal
     volumes:
-      - ./application/:/var/www/html/
+      - ./:/var/www/html/
       - ./logs/php.log:/var/log/fpm-php.www.log
     container_name: php
     expose:
@@ -210,14 +210,14 @@ Modify the MySQL configuration in the .env file as follows.
 
 ![alt text](images/image2.png)
 
-### Now run the following command from the [your_app] folder to start all the 3 services
+Now run the following command from the [your_app] folder to start all the 3 services
 
 ```bash
 docker-compose up --build
 
 ```
 
-### Right now you can run the following commands to create the database and run the migrations.
+Right now you can run the following commands to create the database and run the migrations.
 
 In a new terminal window go to the [your_app] folder and run the following commands
 
@@ -228,7 +228,7 @@ create database laravel;
 quit
 ```
 
-### Now open up a new terminal tab and cd into the [your_app] folder from there run the following commands to do a composer install in the container
+Now open up a new terminal tab and cd into the [your_app] folder from there run the following commands to do a composer install in the container
 
 ```bash
 docker-compose exec php sh
@@ -236,13 +236,13 @@ cd /var/www/html
 composer install
 ```
 
-### Run the following command to generate the application key in the .env file and run the migrations
+Run the following command to generate the application key in the .env file and run the migrations
 
 ```bash
 php artisan key:generate
 php artisan migrate
 ```
 
-## Your beautiful Laravel application is up and running on localhost:8080
+#### Your beautiful Laravel application is up and running on localhost:8080
 
 ![alt text](images/image3.png)
